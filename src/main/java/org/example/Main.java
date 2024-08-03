@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.example.strategies.CommercialStrategy;
 
 import static javafx.animation.Animation.INDEFINITE;
 import static javafx.util.Duration.seconds;
@@ -16,8 +17,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Board board = new Board(250, 150);
-        board.randomize(70);
+        Board board = new Board(200, 100, new CommercialStrategy());
+        board.randomize(15);
         board.fillColumn(6);
 
         UserInterface userInterface = new UserInterface(primaryStage);

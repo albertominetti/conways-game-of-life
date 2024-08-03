@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.strategies.Strategy;
+
 import java.util.Random;
 
 import static java.lang.Math.floorMod;
@@ -12,9 +14,13 @@ public class Board {
     private final int height;
     private boolean[][] grid;
 
-    public Board(int width, int height) {
+    private Strategy strategy;
+
+    public Board(int width, int height, Strategy strategy) {
         this.width = width;
         this.height = height;
+        this.strategy = strategy;
+        strategy.setBoard(this);
         emptyGrid();
     }
 
@@ -69,27 +75,13 @@ public class Board {
         boolean[][] newGrid = new boolean[width][height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                int liveNeighbours = liveNeighbourCount(x, y);
-
-                if (isAlive(x, y) && liveNeighbours < 2) {
-                    // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-                    newGrid[x][y] = false;
-                } else if (isAlive(x, y) && (2 <= liveNeighbours && liveNeighbours <= 3)) {
-                    // Any live cell with two or three live neighbours lives on to the next generation.
-                    newGrid[x][y] = true;
-                } else if (isAlive(x, y) && liveNeighbours > 3) {
-                    // Any live cell with more than three live neighbours dies, as if by overpopulation.
-                    newGrid[x][y] = false;
-                } else if (!isAlive(x, y) && liveNeighbours == 3) {
-                    // Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-                    newGrid[x][y] = true;
-                }
+                newGrid[x][y] = strategy.calcNextGenerationForCell(x, y);
             }
         }
         grid = newGrid;
     }
 
-    private int liveNeighbourCount(int x, int y) {
+    public int liveNeighbourCount(int x, int y) {
         int neighbours = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
