@@ -14,6 +14,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
           java-version: 21
+          distribution: zulu
     - name: Compile with Maven
       run: mvn -B -U compile
     - name: Test
