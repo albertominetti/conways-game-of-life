@@ -18,12 +18,14 @@ The universe of the Game of Life is an infinite two-dimensional orthogonal grid 
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
 
 
-![alt text](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif "Gosper's glider gun")
+![Gosper's glider gun](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif "Gosper's glider gun")
 
 
 ## About Project
 
 As part of a teaching program for family and friends I decided to build a Java version of the Game of Life in order to showcase some programming concepts; meanwhile I introduced the UI with JavaFX and tried to keep the design clean by using Object Oriented patterns and encapsulation.
+
+![screenshot](sample_screenshot.png)
 
 ## Features
 
