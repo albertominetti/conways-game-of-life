@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.strategies.Strategy;
+import org.example.strategies.byset.StandardBySetStrategy;
 
 import java.util.Random;
 
@@ -13,19 +14,14 @@ public class Board {
     private final int width;
     private final int height;
     private boolean[][] grid;
-
+    private long generation;
     private Strategy strategy;
 
-    public Board(int width, int height, Strategy strategy) {
+    public Board(int width, int height) {
         this.width = width;
         this.height = height;
-        this.strategy = strategy;
-        strategy.setBoard(this);
-        emptyGrid();
-    }
-
-    private void emptyGrid() {
-        grid = new boolean[width][height];
+        setStrategy(new StandardBySetStrategy());
+        grid = new boolean[this.width][this.height];
     }
 
 
@@ -36,6 +32,7 @@ public class Board {
                 grid[x][y] = rand.nextInt(100) < alivePercentage;
             }
         }
+        generation = 0;
     }
 
     @Deprecated
@@ -46,16 +43,6 @@ public class Board {
                 System.out.print(grid[x][y] ? FILLED_PLACE : EMPTY_SPACE);
             }
             System.out.println();
-        }
-    }
-
-    public void fillColumn(int column) {
-        if (column >= width || column < 0) {
-            throw new IllegalArgumentException("There is not such column");
-        }
-
-        for (int y = 0; y < height; y++) {
-            grid[column][y] = true;
         }
     }
 
@@ -79,6 +66,7 @@ public class Board {
             }
         }
         grid = newGrid;
+        generation++;
     }
 
     public int liveNeighbourCount(int x, int y) {
@@ -96,4 +84,27 @@ public class Board {
         return neighbours;
     }
 
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+        strategy.setBoard(this);
+    }
+
+    public void setCell(int x, int y, boolean alive) {
+        grid[x][y] = alive;
+    }
+
+    public boolean[][] getGridSnapshot() {
+        boolean[][] snapshotGrid = new boolean[grid.length][];
+        for (int i = 0; i < grid.length; i++) {
+            boolean[] aMatrix = grid[i];
+            int aLength = aMatrix.length;
+            snapshotGrid[i] = new boolean[aLength];
+            System.arraycopy(aMatrix, 0, snapshotGrid[i], 0, aLength);
+        }
+        return snapshotGrid;
+    }
+
+    public long getGeneration() {
+        return generation;
+    }
 }

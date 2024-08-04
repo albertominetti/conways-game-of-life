@@ -1,13 +1,10 @@
 package org.example;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.example.strategies.CommercialStrategy;
-
-import static javafx.animation.Animation.INDEFINITE;
-import static javafx.util.Duration.seconds;
 
 public class Main extends Application {
 
@@ -17,20 +14,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Board board = new Board(200, 100, new CommercialStrategy());
+        Board board = new Board(150, 70);
         board.randomize(15);
-        board.fillColumn(6);
 
-        UserInterface userInterface = new UserInterface(primaryStage);
-        userInterface.bind(board);
-        userInterface.display();
+        DisplayBoard displayBoard = new DisplayBoard(board);
 
-        Timeline timeline = new Timeline(new KeyFrame(seconds(0.1), e -> {
-            board.nextGeneration();
-            userInterface.display();
-        }));
-        timeline.setCycleCount(INDEFINITE);
-        timeline.play();
+        ControlPanel controlPanel = new ControlPanel(displayBoard);
 
+        displayBoard.bind(controlPanel.getTimeline());
+        displayBoard.display();
+
+        VBox root = new VBox(10);
+        root.setPadding(new Insets(10, 10, 10, 10));
+
+        root.getChildren()
+                .addAll(controlPanel.getPanel(), displayBoard.getCanvas());
+
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
+
 }
