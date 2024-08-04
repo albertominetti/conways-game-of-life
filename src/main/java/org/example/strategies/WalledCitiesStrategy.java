@@ -29,4 +29,9 @@ public class WalledCitiesStrategy implements Strategy {
         return isCurrentCellAlive;
     }
 
+    @Override
+    public String name() {
+        return "Walled cities";
+    }
+
 }

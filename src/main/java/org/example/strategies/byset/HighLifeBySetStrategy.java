@@ -14,4 +14,9 @@ public class HighLifeBySetStrategy extends BySetStrategy {
     protected Collection<Integer> whenDeadResurrect() {
         return Arrays.asList(3, 6);
     }
+
+    @Override
+    public String name() {
+        return "Highlife";
+    }
 }

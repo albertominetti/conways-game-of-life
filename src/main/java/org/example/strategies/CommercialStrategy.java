@@ -55,10 +55,12 @@ public class CommercialStrategy implements Strategy {
                 board.isAlive(floorMod(x + 1, board.getWidth()), floorMod(y + 1, board.getHeight())),
                 board.isAlive(floorMod(x - 1, board.getWidth()), floorMod(y + 1, board.getHeight()))
         );
-
         return (int) edges.stream().filter(b -> b).count();
-
     }
 
+    @Override
+    public String name() {
+        return "Commercial";
+    }
 
 }

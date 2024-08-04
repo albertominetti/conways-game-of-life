@@ -14,4 +14,9 @@ public class StandardBySetStrategy extends BySetStrategy {
     protected Collection<Integer> whenDeadResurrect() {
         return Arrays.asList(3);
     }
+
+    @Override
+    public String name() {
+        return "Standard";
+    }
 }

@@ -33,4 +33,9 @@ public class StandardStrategy implements Strategy {
         }
         return isCurrentCellAlive;
     }
+
+    @Override
+    public String name() {
+        return "Standard (deprecated)";
+    }
 }

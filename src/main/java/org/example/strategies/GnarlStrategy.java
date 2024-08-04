@@ -30,4 +30,9 @@ public class GnarlStrategy implements Strategy {
         return isCurrentCellAlive;
     }
 
+    @Override
+    public String name() {
+        return "Gnarl";
+    }
+
 }

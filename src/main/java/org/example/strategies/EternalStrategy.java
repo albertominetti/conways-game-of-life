@@ -15,4 +15,9 @@ public class EternalStrategy implements Strategy {
     public boolean calcNextGenerationForCell(int x, int y) {
         return board.isAlive(x, y);
     }
+
+    @Override
+    public String name() {
+        return "Eternal";
+    }
 }
