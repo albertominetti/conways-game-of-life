@@ -40,3 +40,9 @@ As part of a teaching program for family and friends I decided to build a Java v
 - [x] generations count
 - [ ] stamp a pattern (like the [glider](https://conwaylife.com/wiki/Glider))
 
+## Useful links:
+
+- [Conway's Game of Life](https://conwaylife.com/wiki/Conway%27s_Game_of_Life)
+- [Online Game](https://conwaylife.com/)
+- [Wikipedia: Game of Life](https://omni.wikiwand.com/en/articles/Conway's_Game_of_Life)
+- [Glider: basic starship](https://omni.wikiwand.com/en/articles/Glider_(Conway's_Game_of_Life))

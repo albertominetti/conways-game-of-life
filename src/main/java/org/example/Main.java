@@ -3,6 +3,7 @@ package org.example;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -31,6 +32,9 @@ public class Main extends Application {
                 .addAll(controlPanel.getPanel(), displayBoard.getCanvas());
 
         primaryStage.setScene(new Scene(root));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/glider.png")));
+        primaryStage.setTitle("Conway's Game of Life");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
