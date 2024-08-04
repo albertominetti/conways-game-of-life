@@ -36,4 +36,5 @@ As part of a teaching program for family and friends I decided to build a Java v
 - [x] drag to kill or resurrect a cell
 - [x] drag to kill or resurrect a cell
 - [x] generations count
+- [ ] stamp a pattern (like the [glider](https://conwaylife.com/wiki/Glider))
 
