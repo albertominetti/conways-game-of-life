@@ -38,7 +38,7 @@ public class DisplayBoard {
     public void display() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(GRAY);
-        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.fillRect(0, 0, board.getWidth() * cellSize + 1, board.getHeight() * cellSize + 1);
         for (int x = 0; x < board.getWidth(); x++) {
             for (int y = 0; y < board.getHeight(); y++) {
                 if (board.isAlive(x, y)) {
