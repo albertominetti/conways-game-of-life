@@ -12,7 +12,7 @@ public class DisplayBoard {
     private static final int MAX_WIDTH = 1600;
 
 
-    private Board board;
+    private final Board board;
     private int cellSize;
 
     private Canvas canvas;
@@ -37,18 +37,16 @@ public class DisplayBoard {
 
     public void display() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(GRAY);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < board.getWidth(); x++) {
             for (int y = 0; y < board.getHeight(); y++) {
-                gc.setFill(GRAY);
-                gc.fillRect(x * cellSize, y * cellSize, cellSize + 1, cellSize + 1);
-
                 if (board.isAlive(x, y)) {
                     gc.setFill(DEEPSKYBLUE);
-                    gc.fillRect((x * cellSize) + 1, (y * cellSize) + 1, cellSize - 1, cellSize - 1);
                 } else {
                     gc.setFill(AZURE);
-                    gc.fillRect((x * cellSize) + 1, (y * cellSize) + 1, cellSize - 1, cellSize - 1);
                 }
+                gc.fillRect((x * cellSize) + 1, (y * cellSize) + 1, cellSize - 1, cellSize - 1);
             }
         }
     }
