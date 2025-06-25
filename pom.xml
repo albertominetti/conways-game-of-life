@@ -44,6 +44,20 @@
 
     <build>
         <plugins>
+            <!-- Ensures that the resulting JAR has a Main-Class attribute so it can be launched with
+                 `java -jar target/conways-game-of-life-1.0-SNAPSHOT.jar` -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.example.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
