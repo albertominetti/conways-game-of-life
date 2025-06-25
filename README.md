@@ -61,10 +61,10 @@ This downloads the Java FX dependencies (on the first run) and launches the `org
 ```bash
 mvn clean package
 ```
-After the build you can run the generated JAR with the Java FX runtime modules that Maven places in `target/lib`:
+After the build you can run the generated JAR with the Java FX runtime modules available from the fat-JAR:
 
 ```bash
-java -p target/lib -m org.example/org.example.Main
+java -jar target/*.jar
 ```
 
 > Tip: You can also open the project in IntelliJ IDEA or Eclipse and run the `Main` class directly; just make sure the Java FX libraries are resolved from Maven.
