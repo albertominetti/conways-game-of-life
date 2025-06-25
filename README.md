@@ -40,6 +40,35 @@ As part of a teaching program for family and friends I decided to build a Java v
 - [x] generations count
 - [ ] stamp a pattern (like the [glider](https://conwaylife.com/wiki/Glider))
 
+## Running the application
+
+This project is built with Maven and uses the `javafx-maven-plugin` so you don’t have to manually deal with Java FX modules on the class-path.
+
+### Prerequisites
+
+* JDK 21 or newer (matching the version set in *pom.xml*)
+* Maven 3.9+
+
+### Start the UI directly (recommended during development)
+
+```bash
+mvn javafx:run
+```
+This downloads the Java FX dependencies (on the first run) and launches the `org.example.Main` class defined in *pom.xml*.
+
+### Create an executable JAR
+
+```bash
+mvn clean package
+```
+After the build you can run the generated JAR with the Java FX runtime modules that Maven places in `target/lib`:
+
+```bash
+java -p target/lib -m org.example/org.example.Main
+```
+
+> Tip: You can also open the project in IntelliJ IDEA or Eclipse and run the `Main` class directly; just make sure the Java FX libraries are resolved from Maven.
+
 ## Useful links:
 
 - [Conway's Game of Life](https://conwaylife.com/wiki/Conway%27s_Game_of_Life)
